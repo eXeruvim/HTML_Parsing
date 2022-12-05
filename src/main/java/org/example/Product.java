@@ -1,6 +1,5 @@
 package org.example;
 
-import java.io.IOException;
 import java.util.List;
 
 public class Product {
@@ -15,6 +14,9 @@ public class Product {
     private String reviews;
     private String option;
     private List<String> variety;
+    private String shipping_time;
+    private String favorite;
+    private String shipping_price;
 
     public String getTitle() {
         return title;
@@ -36,8 +38,8 @@ public class Product {
         return usd;
     }
 
-    public void setUsd(String usd) throws IOException {
-        this.usd = String.valueOf((Float.parseFloat(getRub()) / Float.parseFloat(Currency.getUsdCurrency())));
+    public void setUsd(String usd) {
+        this.usd = usd;
     }
 
     public String getRub() {
@@ -45,7 +47,7 @@ public class Product {
     }
 
     public void setRub(String rub) {
-        this.rub = rub.replaceAll("\\.", "").replaceAll("\\s", "").replaceAll("[^0-9,]", "").replaceAll(",", ".");
+        this.rub = rub;
     }
 
     public String getPicture() {
@@ -57,7 +59,7 @@ public class Product {
     }
 
     public void setSalePriceRUB(String salePriceRUB) {
-        this.salePriceRUB = salePriceRUB.replaceAll("\\.", "").replaceAll("\\s", "").replaceAll("[^0-9,]", "").replaceAll(",", ".");
+        this.salePriceRUB = salePriceRUB;
     }
 
     public String getSalePriceRUB() {
@@ -68,8 +70,8 @@ public class Product {
         return salePriceUSD;
     }
 
-    public void setSalePriceUSD(String salePriceUSD) throws IOException {
-        this.salePriceUSD = String.valueOf(Math.round(Float.parseFloat(getSalePriceRUB()) / Float.parseFloat(Currency.getUsdCurrency())));
+    public void setSalePriceUSD(String salePriceUSD) {
+        this.salePriceUSD = salePriceUSD;
     }
 
     public String getRating() {
@@ -104,17 +106,45 @@ public class Product {
         this.variety = variety;
     }
 
+    public String getShipping_time() {
+        return shipping_time;
+    }
+
+    public void setShipping_time(String shipping_time) {
+        this.shipping_time = shipping_time;
+    }
+
+    public String getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(String favorite) {
+        this.favorite = favorite;
+    }
+
+    public String getShipping_price() {
+        return shipping_price;
+    }
+
+    public void setShipping_price(String shipping_price) {
+        this.shipping_price = shipping_price;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
-                "Товар = '" + title + '\'' + "\n" +
+                "title='" + title + '\'' +
+                ", url='" + url + '\'' +
+                ", picture='" + picture + '\'' +
+                ", rating='" + rating + '\'' +
+                ", reviews='" + reviews + '\'' +
                 option + " " + variety.toString() + "\n" +
                 "Ссылка = '" + url + '\'' + "\n" +
-                "Цена = '" + rub + " руб. (" + usd + " $)" + '\'' + "\n" +
-                "Изображение = '" + picture + '\'' + "\n" +
-                "Цена по акции = '" + salePriceRUB + " руб. (" + salePriceUSD + " $)"  + '\'' + "\n" +
-                "Рейтинг = '" + rating + '\'' + "\n" +
-                "Отзывов = '" + reviews + '\'' +
+                "Цена = '" + rub + " (" + usd + "$)" + '\'' + "\n" +
+                "Цена по акции = '" + salePriceRUB + " (" + salePriceUSD + "$)"  + '\'' + "\n" +
+                ", shipping_time='" + shipping_time + '\'' +
+                ", favorite='" + favorite + '\'' +
+                ", shipping_price='" + shipping_price + '\'' +
                 '}';
     }
 }

@@ -5,6 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -18,12 +19,15 @@ public class DOM {
 
         List<Product> productList = new ArrayList<>();
         String link =
-                "https://ru.banggood.com/ru/Wholesale-Computers-and-Office-ca-5001.html?bid=210707&from=nav&a=1669744527.8678&DCC=RU&currency=RUB";
+                "https://ru.banggood.com/ru/Wholesale-Computers-and-Office-ca-5001.html?bid=210707&from=nav&a=1670268857.2551&DCC=RU&currency=RUB";
         System.setProperty("webdriver.chrome.driver", "selenium\\chromedriver.exe");
         WebDriver webDriver = new ChromeDriver();
+        JavascriptExecutor jse = (JavascriptExecutor) webDriver;
+
         try {
             webDriver.get(link);
-            Thread.sleep(4000);
+            //jse.executeScript("scroll(0, 1000);");
+            Thread.sleep(5000);
 
             Document document = Jsoup.parse(webDriver.getPageSource());
             document = Jsoup.parse(document.getElementsByClass("product-list").html());
@@ -34,29 +38,43 @@ public class DOM {
                 Product product = new Product();
                 // Парсинг со страницы товаров
                 product.setUrl(ordersElement.child(0).getElementsByClass("img notranslate").select("a").attr("href"));
-                product.setSalePriceRUB(Objects.requireNonNull(ordersElement.child(1).getElementsByClass("price").first()).text());
-                product.setRub(Objects.requireNonNull(ordersElement.child(2).getElementsByClass("price-old").first()).text());
                 product.setTitle(ordersElement.child(3).getElementsByClass("title").select("a").attr("title"));
                 product.setReviews(ordersElement.child(4).getElementsByClass("review").select("a").text());
 
                 // Парсинг со страницы товара
-                Document order = Jsoup.connect(ordersElement.child(0).getElementsByClass("img notranslate").select("a").attr("href")).get();
+                webDriver.get(product.getUrl());
+                jse.executeScript("scroll(0, 250);");
+                Thread.sleep(3000);
+                Document order = Jsoup.parse(webDriver.getPageSource());
+                product.setShipping_time(order.getElementsByClass("shipping-time").select("em").text());
+                product.setShipping_price(order.getElementsByClass("shipping-price").select("em").text());
+                product.setFavorite(order.getElementsByClass("wish-btn exclick").text());
 
                 product.setPicture(order.getElementsByClass("image-max").select("img").attr("src"));
                 product.setRating(order.getElementsByClass("star-num js-star-num").text());
                 product.setOption(Objects.requireNonNull(order.getElementsByClass("block-title").select("span").first()).text());
                 product.setVariety(order.getElementsByClass("block-cnt").select("a").eachAttr("title"));
-                product.setUsd(product.getRub());
-                product.setSalePriceUSD(product.getSalePriceRUB());
+                if (order.getElementsByClass("discount").text().isEmpty()){
+                    product.setRub(order.getElementsByClass("main-price").select("span").text());
+                    product.setUsd(order.getElementsByClass("main-price").attr("oriprice"));
+                }
+                else {
+                    product.setRub(order.getElementsByClass("old-price").select("span").text());
+                    product.setUsd(order.getElementsByClass("old-price").attr("oriprice"));
+                    product.setSalePriceUSD(order.getElementsByClass("main-price").attr("oriprice"));
+                    product.setSalePriceRUB(order.getElementsByClass("main-price").select("span").text());
+                }
 
-                Thread.sleep(1000);
                 productList.add(product);
+
+                webDriver.navigate().back();
             }
         }
         catch (Exception e){
             e.printStackTrace();
         }
         finally {
+            webDriver.manage().deleteAllCookies();
             webDriver.quit();
         }
         return productList;
