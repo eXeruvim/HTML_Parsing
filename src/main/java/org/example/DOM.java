@@ -5,7 +5,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -27,7 +29,7 @@ public class DOM {
         try {
             webDriver.get(link);
             //jse.executeScript("scroll(0, 1000);");
-            Thread.sleep(5000);
+            Thread.sleep(4000);
 
             Document document = Jsoup.parse(webDriver.getPageSource());
             document = Jsoup.parse(document.getElementsByClass("product-list").html());
@@ -44,12 +46,17 @@ public class DOM {
                 // Парсинг со страницы товара
                 webDriver.get(product.getUrl());
                 jse.executeScript("scroll(0, 250);");
-                Thread.sleep(3000);
+                Thread.sleep(2000);
                 Document order = Jsoup.parse(webDriver.getPageSource());
                 product.setShipping_time(order.getElementsByClass("shipping-time").select("em").text());
                 product.setShipping_price(order.getElementsByClass("shipping-price").select("em").text());
                 product.setFavorite(order.getElementsByClass("wish-btn exclick").text());
 
+
+/*                if (webDriver.findElements(By.className("next")).get(0).isDisplayed())
+                    webDriver.findElements(By.className("next")).get(0).click();
+                product.setPicture(Objects.requireNonNull(order.getElementsByClass("listWrap J_ex_wrap").first()).html());
+                */
                 product.setPicture(order.getElementsByClass("image-max").select("img").attr("src"));
                 product.setRating(order.getElementsByClass("star-num js-star-num").text());
                 product.setOption(Objects.requireNonNull(order.getElementsByClass("block-title").select("span").first()).text());

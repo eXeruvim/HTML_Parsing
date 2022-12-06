@@ -1203,7 +1203,7 @@ sys|schema||mysql.sys||TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="320" parent="301" name="comment_ID">
-      <AutoIncrement>2</AutoIncrement>
+      <AutoIncrement>1</AutoIncrement>
       <DataType>bigint unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1414,7 +1414,7 @@ comment_date_gmt</ColNames>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="358" parent="303" name="option_id">
-      <AutoIncrement>589</AutoIncrement>
+      <AutoIncrement>667</AutoIncrement>
       <DataType>bigint unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1459,7 +1459,7 @@ comment_date_gmt</ColNames>
       <UnderlyingIndexName>option_name</UnderlyingIndexName>
     </key>
     <column id="367" parent="304" name="meta_id">
-      <AutoIncrement>67</AutoIncrement>
+      <AutoIncrement>66</AutoIncrement>
       <DataType>bigint unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1498,7 +1498,7 @@ comment_date_gmt</ColNames>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="375" parent="305" name="ID">
-      <AutoIncrement>58</AutoIncrement>
+      <AutoIncrement>59</AutoIncrement>
       <DataType>bigint unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1693,7 +1693,7 @@ term_taxonomy_id</ColNames>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="410" parent="307" name="term_taxonomy_id">
-      <AutoIncrement>3</AutoIncrement>
+      <AutoIncrement>2</AutoIncrement>
       <DataType>bigint unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1790,7 +1790,7 @@ taxonomy</ColNames>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="429" parent="309" name="term_id">
-      <AutoIncrement>3</AutoIncrement>
+      <AutoIncrement>2</AutoIncrement>
       <DataType>bigint unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1834,7 +1834,7 @@ taxonomy</ColNames>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="437" parent="310" name="umeta_id">
-      <AutoIncrement>19</AutoIncrement>
+      <AutoIncrement>18</AutoIncrement>
       <DataType>bigint unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1873,7 +1873,7 @@ taxonomy</ColNames>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="445" parent="311" name="ID">
-      <AutoIncrement>2</AutoIncrement>
+      <AutoIncrement>1</AutoIncrement>
       <DataType>bigint unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>

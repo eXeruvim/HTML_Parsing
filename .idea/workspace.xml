@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2530e06e-cf1f-48f8-989a-0690d827c571" name="Changes" comment="fixes">
+    <list default="true" id="2530e06e-cf1f-48f8-989a-0690d827c571" name="Changes" comment="Reworked logic">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/69ed91aa-44c1-488f-8e45-79578a19f2aa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/69ed91aa-44c1-488f-8e45-79578a19f2aa.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Currency.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DOM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DOM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Product.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +88,8 @@
       <workItem from="1669669506710" duration="53262000" />
       <workItem from="1670010652836" duration="5260000" />
       <workItem from="1670174002916" duration="473000" />
-      <workItem from="1670264971509" duration="12102000" />
+      <workItem from="1670264971509" duration="12448000" />
+      <workItem from="1670346273289" duration="3843000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1669680989807</created>
@@ -119,7 +119,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670015377340</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Reworked logic">
+      <created>1670277557093</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670277557093</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Reworked logic">
+      <created>1670277579216</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1670277579216</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,6 +155,7 @@
     <MESSAGE value="Processed the main page of the orders (first page)" />
     <MESSAGE value="Processed order page" />
     <MESSAGE value="fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixes" />
+    <MESSAGE value="Reworked logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reworked logic" />
   </component>
 </project>

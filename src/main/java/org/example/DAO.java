@@ -29,11 +29,13 @@ public class DAO {
                 else skip++;
 
             }
-            if (skip > 0) System.out.println("Некоторые товары уже находятся в базе данных. \t товаров пропущено: " + skip);
-            if (posts > 0) System.out.println("Данные успешно добавлены." + "\t товаров загружено: " + posts);
             statement.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            if (skip > 0) System.out.println("Некоторые товары уже находятся в базе данных. \t товаров пропущено: " + skip);
+            if (posts > 0) System.out.println("Данные успешно добавлены." + "\t товаров загружено: " + posts);
+            if (skip == 0 && posts == 0) System.out.println("Данные не были добавлены");
         }
     }
 }
